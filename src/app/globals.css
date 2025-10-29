@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Matrix-style theme variables */
+:root {
+  --matrix-green: #00ff00;
+  --matrix-green-dark: #00cc00;
+  --matrix-green-light: #33ff33;
+  --matrix-bg: #000000;
+  --matrix-text: #00ff00;
+}
+
+/* Matrix-style animations */
+@keyframes matrix-glow {
+  0%, 100% { 
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  }
+  50% { 
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+  }
+}
+
+@keyframes matrix-pulse {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1);
+    box-shadow: 0 0 5px #00ff00;
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00;
+  }
+}
+
+@keyframes matrix-rain {
+  0% { 
+    transform: translateY(-100vh); 
+    opacity: 0; 
+  }
+  10% { 
+    opacity: 1; 
+  }
+  90% { 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(100vh); 
+    opacity: 0; 
+  }
+}
+
+@keyframes matrix-scan {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes matrix-flicker {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1) contrast(1);
+  }
+  2% {
+    opacity: 0.8;
+    filter: brightness(1.2) contrast(1.1);
+  }
+  4% {
+    opacity: 1;
+    filter: brightness(0.9) contrast(0.9);
+  }
+  6% {
+    opacity: 0.9;
+    filter: brightness(1.1) contrast(1.05);
+  }
+  8% {
+    opacity: 1;
+    filter: brightness(1) contrast(1);
+  }
+}
+
+@keyframes matrix-border-glow {
+  0%, 100% {
+    border-color: rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+  }
+  50% {
+    border-color: rgba(0, 255, 0, 0.8);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5), 0 0 25px rgba(0, 255, 0, 0.3);
+  }
+}
+
+/* Animation delay classes */
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-1000 { animation-delay: 1000ms; }
+.animation-delay-1500 { animation-delay: 1500ms; }
+.animation-delay-2000 { animation-delay: 2000ms; }
+.animation-delay-4000 { animation-delay: 4000ms; }
+
+/* Matrix-style utility classes */
+.matrix-glow {
+  animation: matrix-glow 2s ease-in-out infinite alternate;
+}
+
+.matrix-pulse {
+  animation: matrix-pulse 2s ease-in-out infinite;
+}
+
+.matrix-rain {
+  animation: matrix-rain 3s linear infinite;
+}
+
+.matrix-scan {
+  animation: matrix-scan 4s ease-in-out infinite;
+}
+
+.matrix-flicker {
+  animation: matrix-flicker 0.1s ease-in-out infinite;
+}
+
+.matrix-border-glow {
+  animation: matrix-border-glow 2s ease-in-out infinite alternate;
+}
+
+/* Matrix-style text effects */
+.matrix-text {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+}
+
+.matrix-text-glow {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+  animation: matrix-glow 2s ease-in-out infinite alternate;
+}
+
+/* Matrix-style background patterns */
+.matrix-bg {
+  background: #000000;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 255, 0, 0.05) 0%, transparent 50%);
+}
+
+/* Matrix-style borders */
+.matrix-border {
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+.matrix-border-glow {
+  border: 1px solid rgba(0, 255, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  animation: matrix-border-glow 2s ease-in-out infinite alternate;
+}
+
+/* Matrix-style buttons */
+.matrix-button {
+  background: linear-gradient(45deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.2));
+  border: 1px solid rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.matrix-button:hover {
+  background: linear-gradient(45deg, rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0.3));
+  border-color: rgba(0, 255, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Matrix-style cards */
+.matrix-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.matrix-card:hover {
+  border-color: rgba(0, 255, 0, 0.6);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4), 0 0 30px rgba(0, 255, 0, 0.2);
+}
+
+/* Matrix-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 0, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 0, 0.8);
+}
+
+/* Matrix-style selection */
+::selection {
+  background: rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+}
+
+/* Matrix-style focus */
+.matrix-focus:focus {
+  outline: none;
+  border-color: rgba(0, 255, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Matrix-style loading spinner */
+.matrix-spinner {
+  border: 2px solid rgba(0, 255, 0, 0.3);
+  border-top: 2px solid #00ff00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Matrix-style progress bar */
+.matrix-progress {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  overflow: hidden;
+}
+
+.matrix-progress-bar {
+  background: linear-gradient(90deg, #00ff00, #33ff33);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  transition: width 0.3s ease;
+}
+
+/* Matrix-style input fields */
+.matrix-input {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.matrix-input:focus {
+  outline: none;
+  border-color: rgba(0, 255, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.matrix-input::placeholder {
+  color: rgba(0, 255, 0, 0.5);
+}
