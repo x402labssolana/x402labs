@@ -863,7 +863,7 @@ export default function TradingAgentPage() {
   // API functions for fetching token data
   const getTokenSymbol = async (tokenAddress: string): Promise<string | null> => {
     try {
-      const heliosKey = '07619634-789b-4f04-8997-d0f04c9104dd';
+      const heliosKey = process.env.HELIOS_RPC_KEY || '07619634-789b-4f04-8997-d0f04c9104dd';
       const url = `https://mainnet.helius-rpc.com/?api-key=${heliosKey}`;
       
       const payload = {
@@ -944,7 +944,8 @@ export default function TradingAgentPage() {
 
   const getTokenMetadata = async (tokenAddress: string): Promise<{symbol: string, name: string, supply?: number} | null> => {
     try {
-      const url = `https://api.helius.xyz/v0/token-metadata?api-key=825e1141-16c3-41d0-bbc1-089db9893648`;
+      const heliosMetadataKey = process.env.HELIOS_METADATA_KEY || '825e1141-16c3-41d0-bbc1-089db9893648';
+      const url = `https://api.helius.xyz/v0/token-metadata?api-key=${heliosMetadataKey}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -980,7 +981,7 @@ export default function TradingAgentPage() {
       console.log(`Getting token creation date for: ${tokenAddress}`);
       
       // Use a faster approach - limit to first few pages and add timeout
-      const heliosKey = '07619634-789b-4f04-8997-d0f04c9104dd';
+      const heliosKey = process.env.HELIOS_RPC_KEY || '07619634-789b-4f04-8997-d0f04c9104dd';
       const rpcUrl = `https://mainnet.helius-rpc.com/?api-key=${heliosKey}`;
       
       let before = null;
@@ -1113,7 +1114,8 @@ export default function TradingAgentPage() {
 
   const getTokenHolders = async (tokenAddress: string): Promise<any[]> => {
     try {
-      const url = 'https://mainnet.helius-rpc.com/?api-key=050174d4-9124-486f-8562-3b7ffbf04b26';
+      const heliosBackupKey = process.env.HELIOS_RPC_KEY_BACKUP || '050174d4-9124-486f-8562-3b7ffbf04b26';
+      const url = `https://mainnet.helius-rpc.com/?api-key=${heliosBackupKey}`;
       const payload = {
         "jsonrpc": "2.0",
         "id": "1",

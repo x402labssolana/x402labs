@@ -20,7 +20,8 @@ export default function RateLimitTest() {
     const testRequests = Array.from({ length: 20 }, (_, i) => 
       makeHeliusRequest(async () => {
         // Simulate a Helius API call
-        const response = await fetch('https://mainnet.helius-rpc.com/?api-key=07619634-789b-4f04-8997-d0f04c9104dd', {
+        const heliosKey = process.env.HELIOS_RPC_KEY || '07619634-789b-4f04-8997-d0f04c9104dd';
+        const response = await fetch(`https://mainnet.helius-rpc.com/?api-key=${heliosKey}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -57,7 +58,8 @@ export default function RateLimitTest() {
     for (let i = 0; i < 10; i++) {
       try {
         await makeHeliusRequest(async () => {
-          const response = await fetch('https://mainnet.helius-rpc.com/?api-key=07619634-789b-4f04-8997-d0f04c9104dd', {
+          const heliosKey = process.env.HELIOS_RPC_KEY || '07619634-789b-4f04-8997-d0f04c9104dd';
+        const response = await fetch(`https://mainnet.helius-rpc.com/?api-key=${heliosKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
